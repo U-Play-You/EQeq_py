@@ -808,9 +808,9 @@ void LoadCIFFile(string filename) {
 		}
 	}
 
-	cout << "==================================================" << endl;
-	cout << "========= Atom types - X & J values used =========" << endl;
-	cout << "==================================================" << endl;
+	// cout << "==================================================" << endl;
+	// cout << "========= Atom types - X & J values used =========" << endl;
+	// cout << "==================================================" << endl;
 
 	// Read in atom positions, symbols, and names
 	Coordinates tempAtom;
@@ -878,11 +878,11 @@ void LoadCIFFile(string filename) {
 				if (Symbol[i] == Symbol[j]) beenDone = true;
 			}
 			if (beenDone == false) {
-				cout << Symbol[i] << "\t";
-				cout << "Z: " << Z+1 << "\t";
-				cout << "Ch. Cent: " << IonizationData[Z].chargeCenter << "\t";
-				cout << "X: " << X[i] << "\t";
-				cout << "J: " << J[i] << "\t" << endl;
+				// cout << Symbol[i] << "\t";
+				// cout << "Z: " << Z+1 << "\t";
+				// cout << "Ch. Cent: " << IonizationData[Z].chargeCenter << "\t";
+				// cout << "X: " << X[i] << "\t";
+				// cout << "J: " << J[i] << "\t" << endl;
 			}
 		}
 		sInd = eInd2; // End of the previous line
@@ -1027,7 +1027,7 @@ void Qeq() {
 
 	// Fill in 2nd to Nth rows of A
 	for (int i = 1; i < numAtoms; i++) {
-		cout << ".";
+		// cout << ".";
 		for (int j = 0; j < numAtoms; j++) {
 			A[i][j] = GetJ(i-1, j) - GetJ(i, j);
 		}
@@ -1050,7 +1050,7 @@ void RoundCharges(int digits) {
 		// do nothing
 	} else { // There is a small excess charge from rounding, adjust it
 		int numAtomsToAdjust = (int)(abs(qsum * factor) + 0.5); // Weird double-to-int conversion tricks
-		cout << " adjusting the charge of " << numAtomsToAdjust << " atoms!" << endl;
+		// cout << " adjusting the charge of " << numAtomsToAdjust << " atoms!" << endl;
 
 		int sign; if (qsum > 0) sign = -1; else sign = 1;
 		for (int i=0; i < numAtomsToAdjust; i++) { // Adjust
