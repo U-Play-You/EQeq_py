@@ -27,7 +27,7 @@ eqeq.run("mystructure.cif", precision=3, method="Ewald", lambda=1.2)
 ```
 ## Overview
 This is a modified version of the original EQeq charge equilibration algorithm. Reference: [An Extended Charge Equilibration Method](https://doi.org/10.1021/jz3008485).  
-The code is wrapped with **pybind11** as a Python extension module named `eqeq`.
+The code is wrapped with **pybind11** as a Python extension module named `eqeq`.  
 The module provides a convenient function `run()` that performs the calculation and returns a Python dictionary {label: charge}.  
 The files **chargecenters.dat** and **ionizationdata.dat** have been pre-encoded into the program.
 
