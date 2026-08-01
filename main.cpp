@@ -83,6 +83,8 @@
 #include <map>			// For string enumeration (C++ specific)
 #include <cmath>		// For basic math functions
 #include <cstdlib>
+
+#include <stdexcept>
 using namespace std;
 
 namespace py = pybind11;
@@ -400,6 +402,7 @@ Coordinates::Coordinates() {
 IonizationDatum::IonizationDatum() {
 	isDataAvailable.resize(9,false);
 	ionizationPotential.resize(9,0);
+	chargeCenter = 0;
 }
 /*****************************************************************************/
 void DetermineReciprocalLatticeVectors() {
