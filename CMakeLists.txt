@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-find_package(Python3 3.9 EXACT COMPONENTS Interpreter Development.Module REQUIRED)
+find_package(Python3 3.14 EXACT COMPONENTS Interpreter Development.Module REQUIRED)
 
 # Prefer an installed pybind11 package.  Fall back to a pinned copy so a clean
 # checkout can still be configured without manually installing Python packages.

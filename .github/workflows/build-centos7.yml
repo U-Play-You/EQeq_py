@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Python 3.9 / manylinux2014 x86_64
+    name: Python 3.14 / manylinux2014 x86_64
     runs-on: ubuntu-latest
 
     permissions:
@@ -31,14 +31,14 @@ jobs:
             --workdir /io \
             "$MANYLINUX_IMAGE" \
             bash -euxo pipefail -c '
-              PYTHON=/opt/python/cp39-cp39/bin/python
+              PYTHON=/opt/python/cp314-cp314/bin/python
 
               "$PYTHON" -m pip install "pybind11==3.0.2"
 
               cmake -S . -B build-centos7 \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DPython3_EXECUTABLE="$PYTHON" \
-                -DPython3_ROOT_DIR=/opt/python/cp39-cp39 \
+                -DPython3_ROOT_DIR=/opt/python/cp314-cp314 \
                 -Dpybind11_DIR="$("$PYTHON" -m pybind11 --cmakedir)"
 
               cmake --build build-centos7 --parallel "$(nproc)"
@@ -56,22 +56,7 @@ jobs:
       - name: Upload Python extension
         uses: actions/upload-artifact@v4
         with:
-          name: eqeq-python39-centos7-x86_64
+          name: eqeq-python314-centos7-x86_64
           path: dist/eqeq*.so
           if-no-files-found: error
           retention-days: 30
-
-      - name: Publish GitHub Release
-        if: startsWith(github.ref, 'refs/tags/v')
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release upload "$GITHUB_REF_NAME" dist/eqeq*.so --clobber
-          else
-            gh release create "$GITHUB_REF_NAME" dist/eqeq*.so \
-              --verify-tag \
-              --generate-notes \
-              --title "$GITHUB_REF_NAME"
-          fi
