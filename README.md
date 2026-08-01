@@ -7,16 +7,16 @@
 **chargecenters.dat** 与 **ionizationdata.dat** 已预编码进程序中。  
 ## 使用方法
 
-本项目构建的扩展模块指定用于 **CPython 3.14**。请先将本仓库 Fork 到自己的 GitHub 账户，然后通过 GitHub Actions 编译：
+本项目构建的扩展模块指定用于 **CPython 3.13**。请先将本仓库 Fork 到自己的 GitHub 账户，然后通过 GitHub Actions 编译：
 
 1. 打开 Fork 后的仓库，进入 **Actions** 页面；如果 GitHub 提示工作流尚未启用，请先点击 **I understand my workflows, go ahead and enable them**。
 2. 在左侧选择 **Build for CentOS 7**，点击 **Run workflow**，选择要构建的分支后再次点击 **Run workflow**。
-3. 等待任务完成，打开该次运行记录，在 **Artifacts** 中下载 `eqeq-python314-centos7-x86_64`。
+3. 等待任务完成，打开该次运行记录，在 **Artifacts** 中下载 `eqeq-python313-centos7-x86_64`。
 4. 解压 Artifact，将其中的 `eqeq*.so` 放到 Python 脚本所在目录。
 
-该 Artifact 适用于 **CPython 3.14、Linux x86_64**，并基于 `manylinux2014` 构建。它不能直接用于其他 Python 版本、Windows 或 macOS。
+该 Artifact 适用于 **CPython 3.13、Linux x86_64**，并基于 `manylinux2014` 构建。它不能直接用于其他 Python 版本、Windows 或 macOS。
 
-然后在 Python 3.14 中导入并调用：
+然后在 Python 3.13 中导入并调用：
 
 ```python
 import eqeq
@@ -42,16 +42,16 @@ The files **chargecenters.dat** and **ionizationdata.dat** have been pre-encoded
 
 ## Usage
 
-The extension produced by this project targets **CPython 3.14**. Fork this repository to your GitHub account, then build it with GitHub Actions:
+The extension produced by this project targets **CPython 3.13**. Fork this repository to your GitHub account, then build it with GitHub Actions:
 
 1. Open the forked repository and go to **Actions**. If GitHub says workflows are disabled, click **I understand my workflows, go ahead and enable them** first.
 2. Select **Build for CentOS 7**, click **Run workflow**, choose the branch to build, and click **Run workflow** again.
-3. When the run finishes, open it and download `eqeq-python314-centos7-x86_64` from **Artifacts**.
+3. When the run finishes, open it and download `eqeq-python313-centos7-x86_64` from **Artifacts**.
 4. Extract the Artifact and place the included `eqeq*.so` file in the same directory as your Python script.
 
-The Artifact targets **CPython 3.14 on Linux x86_64** and is built against `manylinux2014`. It cannot be used directly with another Python version, Windows, or macOS.
+The Artifact targets **CPython 3.13 on Linux x86_64** and is built against `manylinux2014`. It cannot be used directly with another Python version, Windows, or macOS.
 
-Import and call it with Python 3.14:
+Import and call it with Python 3.13:
 
 ```python
 import eqeq

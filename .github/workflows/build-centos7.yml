@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Python 3.14 / manylinux2014 x86_64
+    name: Python 3.13 / manylinux2014 x86_64
     runs-on: ubuntu-latest
 
     permissions:
@@ -31,14 +31,14 @@ jobs:
             --workdir /io \
             "$MANYLINUX_IMAGE" \
             bash -euxo pipefail -c '
-              PYTHON=/opt/python/cp314-cp314/bin/python
+              PYTHON=/opt/python/cp313-cp313/bin/python
 
               "$PYTHON" -m pip install "pybind11==3.0.2"
 
               cmake -S . -B build-centos7 \
                 -DCMAKE_BUILD_TYPE=Release \
                 -DPython3_EXECUTABLE="$PYTHON" \
-                -DPython3_ROOT_DIR=/opt/python/cp314-cp314 \
+                -DPython3_ROOT_DIR=/opt/python/cp313-cp313 \
                 -Dpybind11_DIR="$("$PYTHON" -m pybind11 --cmakedir)"
 
               cmake --build build-centos7 --parallel "$(nproc)"
@@ -56,7 +56,7 @@ jobs:
       - name: Upload Python extension
         uses: actions/upload-artifact@v4
         with:
-          name: eqeq-python314-centos7-x86_64
+          name: eqeq-python313-centos7-x86_64
           path: dist/eqeq*.so
           if-no-files-found: error
           retention-days: 30
